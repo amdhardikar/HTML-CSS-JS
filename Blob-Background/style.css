@@ -1,0 +1,99 @@
+@import url(https://fonts.googleapis.com/css?family=Playfair+Display:regular,500,600,700,800,900,italic,500italic,600italic,700italic,800italic,900italic);
+
+:root {
+	--main-font: "Playfair Display", serif;
+	--secondary-font: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	--heading-size: 8rem;
+	--footer-size: 15px;
+	--heading-weight: 100;
+	--footer-weight: 700;
+
+	--background: hsl(244, 100%, 9%);
+	--text-color: hsl(244, 100%, 90%);
+	--footer-color: var(--text-color);
+
+	--blur: 100px;
+	--hue: 350;
+	--saturation: 100%;
+	--lightness: 50%;
+
+	--blob-a: hsl(var(--hue), var(--saturation), var(--lightness));
+	--blob-b: hsl(calc(var(--hue) + 10), var(--saturation), var(--lightness));
+	--blob-c: hsl(
+		calc(var(--hue) - 12),
+		var(--saturation),
+		calc(var(--lightness) + 10%)
+	);
+	--blob-d: hsl(
+		calc(var(--hue) - 60),
+		var(--saturation),
+		calc(var(--lightness) + 20%)
+	);
+
+	--container-width: 80%;
+	--footer-bottom: 2%;
+	--footer-right: 2%;
+	--footer-spacing: 5px;
+}
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	user-select: none;
+}
+
+body {
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	scroll-behavior: smooth;
+	font-family: var(--main-font);
+	position: relative;
+	height: 100vh;
+	width: 100vw;
+	background: var(--background);
+	color: var(--text-color);
+}
+
+h1 {
+	font-weight: var(--heading-weight);
+	font-size: var(--heading-size);
+	line-height: var(--heading-size);
+	text-align: left;
+	letter-spacing: 0;
+}
+
+p {
+	position: absolute;
+	bottom: var(--footer-bottom);
+	right: var(--footer-right);
+	text-align: center;
+	text-transform: uppercase;
+	font-family: var(--secondary-font);
+	font-size: var(--footer-size);
+	font-weight: var(--footer-weight);
+	vertical-align: middle;
+	color: var(--footer-color);
+	word-spacing: var(--footer-spacing);
+}
+
+.container {
+	padding: 0;
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: var(--container-width);
+}
+
+#blob {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 0;
+	filter: blur(var(--blur));
+}

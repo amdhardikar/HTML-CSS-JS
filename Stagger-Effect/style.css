@@ -1,0 +1,49 @@
+:root {
+	--box-size: 30px;
+	--gap: 1px;
+	--opacity: 0.1;
+	--scale: 0.4;
+	--color-before: #ff0095b7;
+   --color-after: #ff3d3db7;
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	width: 100vw;
+	margin: 0;
+	background-color: #121212;
+	overflow: hidden;
+}
+
+.grid {
+	display: grid;
+	gap: var(--gap);
+}
+
+.box {
+	position: relative;
+	border-radius: 100%;
+	width: var(--box-size);
+	height: var(--box-size);
+	background-color: var(--color-before);
+	opacity: var(--opacity);
+	transform: scale(var(--scale));
+	/* transition: transfrom 0.1ms ease, opacity 0.1ms ease; */
+	animation: stagger 5s ease-out infinite;
+}
+
+@keyframes stagger {
+	0%,
+	100% {
+		opacity: var(--opacity);
+		transform: scale(var(--scale)) translate(0, 0);
+	}
+	50% {
+		opacity: calc(var(--opacity) + 1);
+		transform: scale(calc(var(--scale) + 0.4)) translate(var(--dx), var(--dy));
+      background-color: var(--color-after);
+	}
+}

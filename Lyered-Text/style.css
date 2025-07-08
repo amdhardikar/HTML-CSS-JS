@@ -1,0 +1,56 @@
+@font-face {
+	font-family: "The Bold";
+	src: url(font/thebold.ttf);
+}
+
+:root {
+	--font-heading: 7rem;
+	--offset: 1.2%;
+	--negative-offset: calc(-1 * var(--offset));
+	--positive-offset: calc(1 * var(--offset));
+}
+
+* {
+	font-family: "The Bold";
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: rgb(41, 41, 41);
+	height: 100vh;
+}
+
+h1 {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	/* transition: all ease 500ms; */
+}
+
+.layered-text {
+	color: rgb(255, 255, 18);
+	letter-spacing: 15px;
+	font-size: var(--font-heading);
+	z-index: 0;
+}
+
+.layered-text::before {
+	color: rgb(12, 255, 235);
+	content: "layers";
+	position: absolute;
+	top: var(--positive-offset);
+	left: var(--positive-offset);
+	z-index: -1;
+}
+
+.layered-text::after {
+	color: rgb(255, 0, 76);
+	content: "layers";
+	position: absolute;
+	top: var(--negative-offset);
+	left: var(--negative-offset);
+	z-index: 1;
+}

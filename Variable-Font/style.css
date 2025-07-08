@@ -1,0 +1,43 @@
+@font-face {
+	font-family: "Kyiv-Sans";
+	src: url("font/KyivTypeSans.woff2") format("woff2");
+	font-weight: 0 1000;
+	font-display: swap;
+}
+
+:root {
+	--font-heading: 5rem;
+	--initial-bg: #000;
+	--hover-bg: #f0e68c;
+	--initial-font-color: #fff;
+	--hover-font-color: #000;
+}
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: var(--hover-bg);
+	color: var(--initial-color);
+	display: grid;
+	height: 100vh;
+	place-content: center;
+}
+
+.variable-font {
+	text-transform: capitalize;
+	font-family: "Kyiv-Sans";
+	font-size: var(--font-heading);
+	text-align: center;
+	margin: 0 auto;
+	width: 50%;
+	font-variation-settings: "wght" 0, "CONT" 1000, "MIDL" 0;
+	transition: font-variation-settings 0.3s ease-in-out;
+}
+
+.variable-font:hover {
+	font-variation-settings: "wght" 1000, "CONT" 800, "MIDL" -1000;
+}

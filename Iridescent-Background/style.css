@@ -1,0 +1,134 @@
+@import url(https://fonts.googleapis.com/css?family=Playfair+Display:regular,500,600,700,800,900,italic,500italic,600italic,700italic,800italic,900italic);
+
+:root {
+	--main-font: "Playfair Display", serif;
+	--secondary-font: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	--heading-size: 8rem;
+	--footer-size: 15px;
+	--heading-weight: 100;
+	--footer-weight: 700;
+
+	--gradient-a: #60a5fa;
+	--gradient-b: #e879f9;
+	--gradient-c: #5eead4;
+	--font-color: hsl(0, 0%, 15%);
+	--footer-color: hsl(0, 0%, 10%);
+
+	--container-width: 80%;
+	--footer-bottom: 2%;
+	--footer-right: 2%;
+	--footer-spacing: 5px;
+
+	--stripe-color: #fff;
+}
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	user-select: none;
+}
+
+body {
+	font-family: var(--main-font);
+	position: relative;
+	height: 100vh;
+	width: 100vw;
+	color: var(--font-color);
+}
+
+.background {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	display: flex;
+	/* place-content: center;
+	place-items: center; */
+	background-image: repeating-linear-gradient(
+			100deg,
+			var(--stripe-color) 0%,
+			var(--stripe-color) 7%,
+			transparent 10%,
+			transparent 12%,
+			var(--stripe-color) 16%
+		),
+		repeating-linear-gradient(
+			100deg,
+			var(--gradient-a) 10%,
+			var(--gradient-b) 15%,
+			var(--gradient-a) 20%,
+			var(--gradient-c) 25%,
+			var(--gradient-a) 30%
+		);
+	background-size: 300%, 200%;
+	background-position: 50% 50%, 50% 50%;
+	mask-image: radial-gradient(ellipse at 100% 0%, black 50%, transparent 70%);
+	filter: blur(20px) invert(100);
+}
+.background::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background-image: repeating-linear-gradient(
+			100deg,
+			var(--stripe-color) 0%,
+			var(--stripe-color) 7%,
+			transparent 10%,
+			transparent 12%,
+			var(--stripe-color) 16%
+		),
+		repeating-linear-gradient(
+			100deg,
+			var(--gradient-a) 10%,
+			var(--gradient-b) 15%,
+			var(--gradient-a) 20%,
+			var(--gradient-c) 25%,
+			var(--gradient-a) 30%
+		);
+	background-size: 200%, 100%;
+	animation: smoothBg 60s linear infinite;
+	background-attachment: fixed;
+	mix-blend-mode: difference;
+}
+
+.container {
+	padding: 0;
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: var(--container-width);
+   mix-blend-mode: luminosity;
+}
+
+h1 {
+	font-weight: var(--heading-weight);
+	font-size: var(--heading-size);
+	line-height: var(--heading-size);
+	text-align: left;
+	letter-spacing: 0px;
+}
+
+p {
+	position: absolute;
+	bottom: var(--footer-bottom);
+	right: var(--footer-right);
+	text-align: center;
+	text-transform: uppercase;
+	font-family: var(--secondary-font);
+	font-size: var(--footer-size);
+	font-weight: var(--footer-weight);
+	vertical-align: middle;
+	color: var(--footer-color);
+	word-spacing: var(--footer-spacing);
+}
+
+@keyframes smoothBg {
+	from {
+		background-position: 50% 50%, 50% 50%;
+	}
+	to {
+		background-position: 350% 50%, 350% 50%;
+	}
+}

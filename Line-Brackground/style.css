@@ -1,0 +1,98 @@
+@import url(https://fonts.googleapis.com/css?family=Playfair+Display:regular,500,600,700,800,900,italic,500italic,600italic,700italic,800italic,900italic);
+
+:root {
+	--main-font: "Playfair Display", serif;
+	--secondary-font: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	--heading-size: 8rem;
+	--footer-size: 15px;
+	--heading-weight: 100;
+	--footer-weight: 700;
+
+	--bg-gradient-start: hsl(281, 100%, 54%);
+	--bg-gradient-end: hsl(0, 100%, 50%);
+	--font-color: hsl(115, 100%, 95%);
+	--footer-color: hsl(0, 0%, 10%);
+
+	--container-width: 80%;
+	--footer-bottom: 2%;
+	--footer-right: 2%;
+	--footer-spacing: 5px;
+}
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	user-select: none;
+}
+
+body {
+	font-family: var(--main-font);
+	position: relative;
+	height: 100vh;
+	width: 100vw;
+	background: repeating-linear-gradient(
+			0deg,
+			rgba(255, 255, 255, 0.3) 0px,
+			rgba(255, 255, 255, 0.3) 1px,
+			transparent calc(100vh / 10),
+			transparent 6px
+		),
+		linear-gradient(
+			90deg,
+			#000000,
+			#00ff00,
+			#0000ff,
+			#e60073,
+			#ff0000,
+			#ffffff
+		);
+	background-blend-mode: soft-light;
+	background-size: 100% 100%, 400% 400%;
+	animation: BackgroundGradient 35s ease infinite;
+	color: var(--font-color);
+}
+
+.container {
+	padding: 0;
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: var(--container-width);
+}
+
+h1 {
+	font-weight: var(--heading-weight);
+	font-size: var(--heading-size);
+	line-height: var(--heading-size);
+	text-align: left;
+	letter-spacing: 0px;
+}
+
+p {
+	position: absolute;
+	bottom: var(--footer-bottom);
+	right: var(--footer-right);
+	text-align: center;
+	text-transform: uppercase;
+	font-family: var(--secondary-font);
+	font-size: var(--footer-size);
+	font-weight: var(--footer-weight);
+	vertical-align: middle;
+	color: var(--footer-color);
+	word-spacing: var(--footer-spacing);
+}
+
+@keyframes BackgroundGradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
