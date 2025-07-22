@@ -1,38 +1,113 @@
+@import url("https://fonts.googleapis.com/css?family=Playfair+Display:400,500,600,700,800,900,400italic,500italic,600italic,700italic,800italic,900italic");
+
 :root {
+	/* Typography */
+	--main-font: "Playfair Display", serif;
+	--secondary-font: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	--heading-size: clamp(3rem, 8vw, 8rem);
+	--footer-size: 15px;
+	--heading-weight: 100;
+	--footer-weight: 700;
+
+	/* Layout */
+	--container-width: 80%;
+	--footer-bottom: 2%;
+	--footer-right: 2%;
+	--footer-spacing: 0.3125rem;
+
+	/* Grid / Box Settings */
 	--box-size: 30px;
 	--gap: 1px;
+
+	/* Animation / Effects */
 	--opacity: 0.1;
 	--scale: 0.4;
-	--color-before: #ff0095b7;
-   --color-after: #ff3d3db7;
+	--color-before: #ff62be62;
+	--color-after: #ff3d3d62;
+
+	/* Theme Colors */
+	--background: hsl(244, 100%, 9%);
+	--text-color: hsl(244, 100%, 90%);
+}
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	user-select: none;
 }
 
 body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	position: relative;
 	height: 100vh;
 	width: 100vw;
-	margin: 0;
-	background-color: #121212;
+	background: var(--background);
+	color: var(--text-color);
+	font-family: var(--main-font);
+	user-select: text;
 	overflow: hidden;
+}
+
+h1 {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: var(--container-width);
+	font-weight: var(--heading-weight);
+	font-size: var(--heading-size);
+	line-height: 1.1;
+	text-align: left;
+	letter-spacing: 0;
+	word-break: break-word;
+}
+
+p {
+	position: absolute;
+	bottom: var(--footer-bottom);
+	right: var(--footer-right);
+	text-align: center;
+	text-transform: uppercase;
+	font-family: var(--secondary-font);
+	font-size: var(--footer-size);
+	font-weight: var(--footer-weight);
+	vertical-align: middle;
+	color: var(--footer-color);
+	word-spacing: var(--footer-spacing);
 }
 
 .grid {
 	display: grid;
 	gap: var(--gap);
+	overflow: hidden;
+}
+
+.container {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
 }
 
 .box {
 	position: relative;
-	border-radius: 100%;
 	width: var(--box-size);
 	height: var(--box-size);
+	border-radius: 50%;
 	background-color: var(--color-before);
 	opacity: var(--opacity);
 	transform: scale(var(--scale));
-	/* transition: transfrom 0.1ms ease, opacity 0.1ms ease; */
-	animation: stagger 5s ease-out infinite;
+	animation: stagger 5s ease-in-out infinite;
+	transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Optional: Interactive hover */
+.box:hover {
+	transform: scale(1);
+	opacity: 1;
+	background-color: var(--color-after);
 }
 
 @keyframes stagger {
@@ -40,10 +115,12 @@ body {
 	100% {
 		opacity: var(--opacity);
 		transform: scale(var(--scale)) translate(0, 0);
+		background-color: var(--color-before);
 	}
 	50% {
-		opacity: calc(var(--opacity) + 1);
-		transform: scale(calc(var(--scale) + 0.4)) translate(var(--dx), var(--dy));
-      background-color: var(--color-after);
+		opacity: calc(var(--opacity) + 0.8);
+		transform: scale(calc(var(--scale) + 0.4))
+			translate(var(--dx, 0), var(--dy, 0));
+		background-color: var(--color-after);
 	}
 }

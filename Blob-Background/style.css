@@ -47,7 +47,6 @@ body {
 	margin: 0;
 	display: flex;
 	flex-direction: column;
-	scroll-behavior: smooth;
 	font-family: var(--main-font);
 	position: relative;
 	height: 100vh;

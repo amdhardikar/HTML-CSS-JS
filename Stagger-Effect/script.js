@@ -1,12 +1,12 @@
 const grid = document.querySelector(".grid");
-const boxSize = 30;
+const boxSize = 50;
 const gap = 1;
 
-let rows = Math.floor(window.innerHeight / (boxSize + gap));
-let cols = Math.floor(window.innerWidth / (boxSize + gap));
+let rows = Math.floor(window.innerHeight / (boxSize + gap) + 1);
+let cols = Math.floor(window.innerWidth / (boxSize + gap)+ 1);
 
-grid.style.gridTemplateColumns = `repeat(${cols}, ${boxSize}px)`
-grid.style.gridTemplateRows = `repeat(${rows}, ${boxSize}px)`
+grid.style.gridTemplateColumns = `repeat(${cols}, ${boxSize}px)`;
+grid.style.gridTemplateRows = `repeat(${rows}, ${boxSize}px)`;
 
 const centerRow = Math.floor(rows / 2);
 const centerCol = Math.floor(cols / 2);
@@ -19,9 +19,9 @@ for (let row = 0; row < rows; row++) {
 		const distance = Math.hypot(row - centerRow, col - centerCol);
 		const delay = distance * 100;
 
-      box.style.animationDelay = `${delay}ms`;
+		box.style.animationDelay = `${delay}ms`;
 
-      const isTop = row < centerRow;
+		const isTop = row < centerRow;
 		const isLeft = col < centerCol;
 
 		let dx = isLeft ? -1 : 1;
